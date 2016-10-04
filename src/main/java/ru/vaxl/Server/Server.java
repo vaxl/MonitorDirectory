@@ -9,7 +9,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import static java.lang.Thread.sleep;
 import static ru.vaxl.ConsoleHelper.printMessage;
 
-public class Server implements Runnable,AutoCloseable{
+class Server implements Runnable,AutoCloseable{
     private volatile AtomicBoolean isRun = new AtomicBoolean(false);
     private String lastSended = "";
     private Connect connect;

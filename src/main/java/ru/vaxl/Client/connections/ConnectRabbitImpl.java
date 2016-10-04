@@ -2,12 +2,9 @@ package ru.vaxl.Client.connections;
 
 import com.rabbitmq.client.*;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.TimeoutException;
 
 public class ConnectRabbitImpl implements ConnectToServer {
-    private final List<String> list = new ArrayList<>();
     private final static String QUEUE_NAME = "hello";
     private Channel channel;
     private Connection connection;
@@ -19,8 +16,8 @@ public class ConnectRabbitImpl implements ConnectToServer {
         try {
             ConnectionFactory factory = new ConnectionFactory();
             factory.setHost(addr);
-            Connection connection = factory.newConnection();
-            Channel channel = connection.createChannel();
+            connection = factory.newConnection();
+            channel = connection.createChannel();
             channel.queueDeclare(QUEUE_NAME, false, false, false, null);
             consumer = new QueueingConsumer(channel);
             channel.basicConsume(QUEUE_NAME, true, consumer);

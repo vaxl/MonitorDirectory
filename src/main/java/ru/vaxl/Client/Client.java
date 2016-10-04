@@ -6,12 +6,12 @@ import java.io.IOException;
 import java.util.concurrent.atomic.AtomicBoolean;
 import static ru.vaxl.ConsoleHelper.printMessage;
 
-public class Client implements Runnable,AutoCloseable{
+class Client implements Runnable,AutoCloseable{
     private final String SERVER_IP;
     private volatile AtomicBoolean isRun = new AtomicBoolean(false);
     private ConnectToServer connect;
 
-    public Client(String SERVER_IP) {
+    Client(String SERVER_IP) {
         this.SERVER_IP = SERVER_IP;
     }
 
